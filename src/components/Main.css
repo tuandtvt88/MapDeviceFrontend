@@ -1,0 +1,58 @@
+/* Hiệu ứng màu nền thay đổi liên tục */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Đảm bảo nội dung không bị tràn */
+    width: calc(100vw - 200px); /* Trừ phần sidebar trên desktop */
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    margin-top: 2px;
+    margin-left: 200px; /* Đẩy nội dung sang phải khi có sidebar */
+    
+    transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
+
+    /* Nền gradient động */
+    /* background: linear-gradient(45deg, #ff4b1f, #ff9068, #1e90ff, #2ed573, #ff4757);
+    background-size: 300% 300%;
+    animation: gradientAnimation 10s ease infinite; */
+}
+
+.floor-container {
+    width: 100%;
+    max-width: 1200px; /* Giới hạn độ rộng */
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.8); /* Nền mờ cho nội dung */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.map-image {
+    width: 100%; /* Đảm bảo ảnh không bị tràn */
+    height: auto;
+}
+
+/* Mobile mode */
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0 !important;
+        width: 110% ; /* Chiếm toàn bộ chiều rộng */
+        height: 110%; /* Đảm bảo không bị tràn */
+        padding: 15px;
+        
+    }
+    .map-image {
+        width: 100%; /* Tăng kích thước ảnh */
+        height: auto; /* Giữ đúng tỷ lệ */
+        max-width: none;
+        max-height: none;
+        object-fit: contain; /* Đảm bảo ảnh hiển thị đầy đủ */
+    }
+}

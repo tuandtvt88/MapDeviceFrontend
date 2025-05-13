@@ -1,0 +1,205 @@
+/* WifiStatus.css */
+.wifi-status-container1 {
+  width: 100%;
+  height: 100%;
+  /* max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+}
+
+/* .wifi-status-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+} */
+
+.wifi-status-header h2 {
+  margin: 0;
+  color: #d9534f;
+  font-size: 17px;
+}
+
+/* .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.refresh-button1 {
+  padding: 8px 16px;
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* .refresh-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+} */
+
+/* .refresh-button:hover:not(:disabled) {
+  background-color: #46b8da;
+} */
+
+/* .spinner {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 2px solid white;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+} */
+
+/* @keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+} */
+
+/* .retry-notice {
+  font-size: 0.8rem;
+  color: #f0ad4e;
+} */
+
+/* .error-message {
+  padding: 10px;
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+} */
+
+/* .error-icon {
+  font-size: 1.2rem;
+} */
+
+.last-updated {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.update-icon {
+  font-size: 1rem;
+}
+
+.offline-count-badge {
+  background-color: #f8f9fa;
+  border-left: 4px solid #d9534f;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.offline-count-badge .count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d9534f;
+}
+
+.offline-count-badge .label {
+  font-size: 1rem;
+  color: #495057;
+}
+
+/* .wifi-devices-table-container {
+  overflow-x: auto;
+} */
+
+.wifi-devices-table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.wifi-devices-table th {
+  background-color: #f9faf8;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #a3ee18;
+}
+
+/* .wifi-devices-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #42e90a;
+} */
+
+/* .wifi-devices-table tr:last-child td {
+  border-bottom: none;
+} */
+
+/* .wifi-devices-table tr.offline {
+  background-color: #fff9fa;
+} */
+
+/* .wifi-devices-table tr:hover {
+  background-color: #f8f9fa;
+} */
+
+/* .status-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+} */
+
+/* .status-badge.offline {
+  background-color: #f8d7da;
+  color: #721c24;
+} */
+
+/* .no-offline-devices {
+  text-align: center;
+  padding: 30px;
+  background-color: #6bd013;
+  border-radius: 8px;
+  margin-top: 20px;
+} */
+
+/* .no-offline-devices p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #28a745;
+} */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .wifi-status-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .wifi-devices-table th,
+  .wifi-devices-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}

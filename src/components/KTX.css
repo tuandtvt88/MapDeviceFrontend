@@ -1,0 +1,169 @@
+.ktx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  left: 11px;
+  width: 98%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative; /* Để các marker định vị theo phần tử cha */
+}
+
+/* Bọc ảnh bản đồ */
+.map-container-ktx {
+  position: relative; /* Cho phép icon WiFi định vị theo bản đồ */
+  height: auto;
+}
+
+/* Định dạng ảnh bản đồ */
+.map-image-ktx {
+  left: 10px;
+  max-width: 100%;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Vị trí dropdown chức năng ở góc trên bên trái ảnh */
+.controls-overlay-ktx {
+  position: absolute;
+  top: -50px;
+  left: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* Marker của WiFi */
+.wifi-marker-ktx {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translate(-50%, -100%); /* Đưa icon WiFi lên trên tên */
+  white-space: nowrap; /* Tránh tên WiFi bị xuống dòng */
+  cursor: pointer;
+}
+
+/* Hiệu ứng WiFi icon phát sáng */
+@keyframes wifiGlow1 {
+  0% { stroke-opacity: 0; }
+  25% { stroke-opacity: 1; }
+  100% { stroke-opacity: 1; }
+}
+@keyframes wifiGlow2 {
+  0% { stroke-opacity: 0; }
+  25% { stroke-opacity: 0; }
+  50% { stroke-opacity: 1; }
+  100% { stroke-opacity: 1; }
+}
+@keyframes wifiGlow3 {
+  0% { stroke-opacity: 0; }
+  50% { stroke-opacity: 0; }
+  75% { stroke-opacity: 1; }
+  100% { stroke-opacity: 1; }
+}
+@keyframes wifiGlow4 {
+  0% { stroke-opacity: 0; }
+  75% { stroke-opacity: 0; }
+  100% { stroke-opacity: 1; }
+}
+
+.wifi-icon-ktx path:nth-child(5) {
+  animation: wifiGlow1 0.7s infinite ease-in-out;
+}
+.wifi-icon-ktx path:nth-child(4) {
+  animation: wifiGlow2 0.7s infinite ease-in-out;
+}
+.wifi-icon-ktx path:nth-child(3) {
+  animation: wifiGlow3 0.7s infinite ease-in-out;
+}
+.wifi-icon-ktx path:nth-child(2) {
+  animation: wifiGlow4 0.7s infinite ease-in-out;
+}
+.wifi-icon-ktx path:nth-child(1) {
+  animation: wifiGlow4 0s infinite ease-in-out;
+}
+
+.wifi-icon-ktx {
+  stroke: rgb(9, 181, 9);  /* Màu xanh lá sáng hơn */
+  stroke-width: 3px;
+  stroke-linecap: round;
+  font-size: 28px;
+}
+
+/* Tên WiFi */
+.wifi-name-ktx {
+  background-color: white;
+  color: blue;
+  padding: 1px 5px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+.wifi-name-ktx:hover {
+  transform: scale(1.5);
+}
+
+/* Icon xóa WiFi */
+.delete-icon-ktx {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .ktx {
+    width: 105%;
+    height: 100vh;
+    left: -10px;
+  }
+  .map-image-ktx {
+      max-width: 100%;
+      max-height: 100vh;
+      
+  }
+
+  .wifi-icon-ktx {
+    font-size: 10px !important;
+    width: 16px;
+    height: 16px;
+  }
+
+  .wifi-name-ktx {
+    font-size: 3px !important;
+    padding: 1px 1px;
+  }
+
+  .wifi-name-ktx:hover {
+    transform: scale(1.1);
+  }
+  .controls-overlay-ktx {
+    position: absolute;
+    top: -90px;
+    left: 0px;
+  }
+  .wifi-marker-ktx input[type="text"] {
+    font-size: 10px !important;
+    width: 60px;
+    padding: 2px 4px;
+  }
+
+  .wifi-marker-ktx button {
+    font-size: 10px !important;
+    padding: 2px 4px;
+  }
+}

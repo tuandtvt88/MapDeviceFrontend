@@ -1,0 +1,85 @@
+// ✅ GET - Lấy danh sách WiFi KTX Dom B
+app.get("/api/ktxdomb", async (req, res) => {
+  try {
+    const result = await sql.query("SELECT * FROM ktxdomb");
+    console.log("🔍 Dữ liệu lấy từ SQL:", result.recordset);
+    res.json(result.recordset);
+  } catch (error) {
+    console.error("❌ Lỗi truy vấn SQL:", error);
+    res.status(500).json({ error: "Lỗi truy vấn SQL Server", details: error.message });
+  }
+});
+
+// ✅ POST - Thêm WiFi mới KTX Dom B
+app.post("/api/ktxdomb", async (req, res) => {
+  const { name, topPosition, leftPosition } = req.body;
+
+  try {
+    const request = new sql.Request();
+    const result = await request
+      .input("name", sql.NVarChar, name)
+      .input("topPosition", sql.VarChar, topPosition)
+      .input("leftPosition", sql.VarChar, leftPosition)
+      .query(`
+        INSERT INTO ktxdomb (Name, TopPosition, LeftPosition)
+        OUTPUT INSERTED.*
+        VALUES (@name, @topPosition, @leftPosition)
+      `);
+
+    const insertedWifi = result.recordset[0];
+
+    res.status(201).json({ message: "✅ Thêm WiFi thành công", wifi: insertedWifi });
+  } catch (err) {
+    console.error("❌ Lỗi thêm WiFi:", err);
+    res.status(500).json({ error: "Lỗi khi thêm WiFi vào cơ sở dữ liệu" });
+  }
+});
+
+// ✅ PUT - Cập nhật WiFi KTX Dom B(Tên + vị trí)
+app.put("/api/ktxdomb/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, topPosition, leftPosition } = req.body;
+
+  try {
+    const request = new sql.Request();
+    await request
+      .input("id", sql.Int, parseInt(id))
+      .input("name", sql.NVarChar, name)
+      .input("topPosition", sql.VarChar, topPosition)
+      .input("leftPosition", sql.VarChar, leftPosition)
+      .query(`
+        UPDATE ktxdomb
+        SET 
+          name = @name,
+          topPosition = @topPosition,
+          leftPosition = @leftPosition
+        WHERE id = @id
+      `);
+
+    res.send("✅ Đã cập nhật WiFi (tên + vị trí) thành công");
+  } catch (error) {
+    console.error("❌ Lỗi cập nhật WiFi:", error);
+    res.status(500).json({ error: "Lỗi cập nhật WiFi", details: error.message });
+  }
+});
+
+//Chức năng xóa wifi KTX Dom B
+app.delete("/api/ktxdomb/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const request = new sql.Request();
+    const result = await request
+      .input("id", sql.Int, parseInt(id))
+      .query("DELETE FROM ktxdomb WHERE id = @id");
+
+    if (result.rowsAffected[0] === 0) {
+      return res.status(404).send("WiFi không tồn tại");
+    }
+
+    res.status(200).send({ message: "✅ Xóa thành công" });
+  } catch (err) {
+    console.error("❌ Lỗi server khi xóa WiFi:", err);
+    res.status(500).send("Lỗi server");
+  }
+});

@@ -1,0 +1,425 @@
+/* Đảm bảo Sidebar hiển thị */
+.sidebar {
+    position: absolute;
+    top: 110px;
+    left: 10px;
+    width: 190px;
+    height: calc(100% - 126px);
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #3498db #2c3e50;
+}
+/* Tăng kích thước phần menu */
+.sidebar-menu {
+    width: 70%;
+}
+/* Kiểu riêng cho nút "Thống kê" */
+.stat-button {
+    width: 88%;
+    padding: 12px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    
+}
+
+.stat-button:hover {
+    background: linear-gradient(90deg, #2980b9, #27ae60);
+    transform: scale(1.05);
+}
+
+/* Dùng riêng cho khối nhà công vụ */
+.sidebar-menu.nha-cong-vu {
+    width: 85%;
+    background-color: #f9f9f9;
+    border-left: 3px solid #4a90e2;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* Nút toggle tên nhà */
+.nha-cong-vu-title {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    font-weight: bold;
+    border: none;
+    padding: 6px 10px;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background-color 0.3s;
+}
+
+.nha-cong-vu-title:hover {
+    background-color: #bbdefb;
+}
+
+/* Nút tầng trong nhà công vụ */
+.nha-cong-vu-title .nha-cong-vu-tang {
+    width: 40% !;
+}
+/* Tùy chỉnh khác cho các nút */
+.nha-cong-vu-title {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.nha-cong-vu-tang:hover {
+    text-decoration: underline;
+    color: #0d47a1;
+}
+
+/* Ẩn Sidebar trên mobile mặc định */
+@media (max-width: 768px) {
+    .sidebar {
+        overflow-y: auto;
+        top: 8px !important;
+        width: 150px !important;
+        height: calc(100vh - 83px) !important; 
+        border-radius: 5px;
+        left: -5px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;    
+    }
+    /* Thiết kế thanh cuộn */
+    .sidebar::-webkit-scrollbar {
+        width: 4px; /* Độ rộng thanh cuộn */
+    }
+
+    .sidebar::-webkit-scrollbar-thumb {
+        background-color: #3498db; /* Màu thanh cuộn */
+        border-radius: 3px;
+    }
+
+    .sidebar::-webkit-scrollbar-track {
+        background: #2c3e50; /* Màu nền thanh cuộn */
+    }
+    .sidebar-button {
+        font-size: 12px !important; /* Giảm kích thước chữ */
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .sidebar-menu.nha-cong-vu .nha-cong-vu-title{
+        font-size: 11px;
+        margin: 5px 0px;
+    }
+}
+       /* Giảm kích thước chữ */
+       .sidebar-title {
+        font-size: 10px;
+        text-align: center;
+        margin-bottom: 5px;
+}
+    .sidebar-button {
+        font-size: 12px;
+        padding: 4px;
+        width: 100%;
+        text-align: center;
+        display: block;
+        border-radius: 5px;
+        background: #223344;
+        color: white;
+        margin: 5px 0;
+    }
+ /* Hiển thị nút đóng trên mobile */
+    /* Nút đóng Sidebar */
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+
+
+/* Ẩn nút đóng trên màn hình lớn */
+@media (min-width: 769px) {
+    .close-btn {
+        display: none;
+    }
+}
+
+/* Nút mở Sidebar trên mobile */
+.menu-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    z-index: 1100;
+    display: none; /* Mặc định ẩn trên máy tính */
+  }
+
+/* Khi Sidebar mở, ẩn nút menu */
+.sidebar.open + .menu-button {
+    display: none;
+}
+
+
+/* Định dạng nút toggle (Beta & Gamma) */
+.toggle-button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.toggle-button:hover {
+    background: linear-gradient(90deg, #2980b9, #27ae60);
+    transform: scale(1.05);
+}
+
+/* Định dạng nút mở Sidebar */
+
+
+/* Khi Sidebar mở, ẩn nút menu */
+.sidebar.open + .menu-button {
+    display: none;
+}
+
+/* Định dạng Sidebar Button */
+.sidebar-button {
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    background: #1f2c3d;
+    margin: 8px 0;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-button:hover {
+    background: #3498db;
+    transform: scale(1.05);
+}
+
+/* Nút đóng Sidebar */
+.close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+/* Search Container */
+.search-container {
+    position: relative;
+    width: 100%;
+    margin: 15px 0;
+    padding: 0 10px;
+  }
+  
+  .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .search-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+  }
+  
+  .clear-search-button {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-radius: 50%;
+  }
+  
+  .clear-search-button:hover {
+    color: #333;
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+  
+  .clear-search-button:active {
+    transform: scale(0.9);
+  }
+  
+  .search-results-container {
+    position: absolute;
+    width: calc(100% - 20px);
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    margin-top: 5px;
+  }
+  
+  .search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .search-result-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .search-result-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .wifi-location {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+  }
+  
+  .no-results-message, .loading-message {
+    padding: 10px 15px;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .selected-wifi-info {
+    background-color: rgba(52, 152, 219, 0.2);
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border: 1px solid #3498db;
+    width: 100%;
+  }
+  
+  .selected-wifi-name {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 5px;
+    word-break: break-word;
+  }
+  
+  .selected-wifi-location {
+    font-size: 12px;
+    color: #bdc3c7;
+  }
+  
+  /* Highlight for selected items */
+  .highlighted {
+    background-color: rgba(52, 152, 219, 0.3);
+    border-left: 3px solid #3498db;
+  }
+  
+
+/* Ẩn nút đóng trên màn hình lớn */
+@media (min-width: 769px) {
+    .close-btn {
+        display: none;
+    }
+}
+/* Hiện nút menu-button khi màn hình nhỏ hơn 768px */
+@media (max-width: 768px) {
+    .menu-button {
+      display: block;
+    }
+    .search-input {
+        font-size: 12px;
+        padding: 8px 30px 8px 12px;
+      }
+      
+      .search-result-item, 
+      .no-results-message,
+      .loading-message {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+      
+      .selected-wifi-info {
+        padding: 8px;
+        font-size: 14px;
+      }
+  }

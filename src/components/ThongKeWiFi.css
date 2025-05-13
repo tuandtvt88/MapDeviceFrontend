@@ -1,0 +1,173 @@
+.thong-ke {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    background: #f9fafc;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.main-title {
+    text-align: center;
+    color: #2c3e50;
+    margin: 0 0 30px 0;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 15px;
+    background: linear-gradient(45deg, #3498db, #2c3e50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.table-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 15px;
+    overflow-x: auto;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.wifi-table {
+    min-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #e0e0e0;
+}
+
+.wifi-table th {
+    background-color: #3498db;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px;
+    text-align: center;
+    position: sticky;
+    left: 0;
+}
+
+.wifi-table td {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #eee;
+}
+
+.wifi-table tr:nth-child(even) td {
+    background-color: #f1f5f9;
+}
+
+.wifi-table tr:hover td {
+    background-color: #e3f2fd;
+}
+
+.total-row {
+    background-color: #e8f5e9 !important;
+    font-weight: 600;
+}
+.total-system {
+    text-align: center;
+    margin: -15px 0 25px 0;
+    padding: 12px;
+    background: #f0f8ff;
+    border-radius: 8px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.total-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-right: 8px;
+}
+
+.total-value {
+    font-weight: 700;
+    color: #3498db;
+    font-size: 1.2em;
+}
+/* Responsive Mobile */
+@media (max-width: 768px) {
+    .thong-ke {
+        padding: 25px; /* Giảm padding */
+        width: 100vw; /* Thêm dòng này */
+        margin-left: -20px; /* Bù trừ padding */
+        margin-right: -20px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .main-title {
+        font-size: 22px;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+        
+    }
+
+    .tables-container {
+        gap: 8px; /* Giảm khoảng cách */
+        padding: 0 10px; /* Thêm padding 2 bên */
+    }
+
+    .table-wrapper {
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .wifi-table {
+        min-width: 100%;
+    }
+
+    .wifi-table th {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .wifi-table td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .ncv-house {
+        margin: 10px 0;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .wifi-table th {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    .wifi-table td {
+        font-size: 11px;
+        padding: 6px;
+    }
+
+    .tables-container {
+        gap: 8px;
+    }
+}
