@@ -19,21 +19,28 @@ export function Tang1Beta() {
     const [highlightedWifi, setHighlightedWifi] = useState(null);
 
     useEffect(() => {
-        // Fetch wifi locations
-        fetch("https://backend-mapdevice.onrender.com/api/tang1beta")
-            .then((response) => response.json())
-            .then((data) => setWifiLocations(data))
-            .catch((error) => console.error("Lỗi lấy dữ liệu WiFi:", error));
+  fetch("https://backend-mapdevice.onrender.com/api/tang1beta")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (!Array.isArray(data)) {
+        console.error("Dữ liệu trả về không phải mảng:", data);
+        setWifiLocations([]);
+      } else {
+        setWifiLocations(data);
+      }
+    })
+    .catch((error) => {
+      console.error("Lỗi lấy dữ liệu WiFi:", error);
+      setWifiLocations([]); // Đặt mảng rỗng nếu có lỗi
+    });
 
-        // Check for highlighted wifi from location state
-        if (location.state?.highlightedWifi) {
-            setHighlightedWifi(location.state.highlightedWifi);
-        }
-     else {
-        // Clear highlight if no highlightedWifi in location state
-        setHighlightedWifi(null);
-    }
-    }, [location.state]);
+  // Xử lý highlighted wifi
+}, [location.state]);
 
         // Add this function to manually clear the highlight
         const clearHighlight = () => {
